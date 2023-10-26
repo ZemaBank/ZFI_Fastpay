@@ -75,7 +75,7 @@ module M2yFast
       @eximia_client ||= Savon.client(
         wsdl: eximia_wsdl,
         log: true,
-        proxy: proxy,
+        # proxy: proxy,
         log_level: production? ? :info : :debug,
         pretty_print_xml: true,
         open_timeout: 30,
