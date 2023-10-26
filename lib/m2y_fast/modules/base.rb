@@ -8,7 +8,7 @@ module M2yFast
       Savon.client(
         wsdl: M2yFast.configuration.wsdl,
         log: true,
-        proxy: M2yFast.configuration.proxy,
+        #proxy: M2yFast.configuration.proxy,
         log_level: M2yFast.configuration.production? ? :info : :debug,
         pretty_print_xml: true,
         open_timeout: 15,
@@ -16,9 +16,9 @@ module M2yFast
       )
     end
 
-    def self.fixie
-      URI.parse M2yFast.configuration.proxy
-    end
+    #def self.fixie
+    #  URI.parse M2yFast.configuration.proxy
+    #end
 
     def self.base_headers
       headers = {}
@@ -40,11 +40,11 @@ module M2yFast
       end
       # puts "Sending POST request to URL: #{url}"
       # puts body
-      HTTParty.post(url, headers: headers, body: body,
-                    http_proxyaddr: fixie.host,
-                    http_proxyport: fixie.port,
-                    http_proxyuser: fixie.user,
-                    http_proxypass: fixie.password)
+      HTTParty.post(url, headers: headers, body: body) #,
+                    #http_proxyaddr: fixie.host,
+                    #http_proxyport: fixie.port,
+                    #http_proxyuser: fixie.user,
+                    #http_proxypass: fixie.password)
     end
 
     def self.trace
