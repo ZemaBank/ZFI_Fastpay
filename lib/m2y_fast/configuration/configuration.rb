@@ -3,14 +3,13 @@
 module M2yFast
   class Configuration
 
-    attr_writer :username, :password, :cnpj, :proxy, :env, :wsdl, :savon_client,
+    attr_writer :username, :password, :cnpj, :env, :wsdl, :savon_client,
                 :eximia_wsdl, :eximia_username, :eximia_password, :eximia_client
 
     def initialize #:nodoc:
       @username = nil
       @password = nil
       @cnpj = nil
-      @proxy = nil
       @env = nil
       @wsdl = nil
       @savon_client = nil
@@ -33,10 +32,6 @@ module M2yFast
       @cnpj
     end
 
-    def proxy
-      @proxy
-    end
-
     def env
       @env
     end
@@ -49,8 +44,7 @@ module M2yFast
       @savon_client ||= Savon.client(
         wsdl: wsdl,
         log: true,
-        # proxy: proxy,
-        log_level: production? ? :info : :debug,
+        log_level: :debug,
         pretty_print_xml: true,
         open_timeout: 30,
         read_timeout: 30
@@ -75,8 +69,7 @@ module M2yFast
       @eximia_client ||= Savon.client(
         wsdl: eximia_wsdl,
         log: true,
-        # proxy: proxy,
-        log_level: production? ? :info : :debug,
+        log_level: :debug,
         pretty_print_xml: true,
         open_timeout: 30,
         read_timeout: 30,
