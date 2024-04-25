@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "httparty"
   spec.add_runtime_dependency "openssl"
   spec.add_runtime_dependency "savon"
-  spec.add_runtime_dependency 'activesupport', '~> 6.1.3.1'
+  spec.add_runtime_dependency 'activesupport', '~> 7.1.3.2'
 end
