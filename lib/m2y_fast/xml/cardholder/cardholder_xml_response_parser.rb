@@ -43,7 +43,11 @@ module M2yFast
         return_code = parsed_hash[:codigo_retorno].to_i
 
         account = parsed_hash.dig(:cartoes_cpf, :conta)
-        account = account.first if account.is_a?(Array)
+        account = account.find do |acc|
+          acc[:cartoes].find do |card|
+            %w[84 86 91 92].exclude?(card[:cod_status_conta])
+          end
+        end if account.is_a?(Array)
 
         {
           error: return_code != 0,
