@@ -17,6 +17,22 @@ module M2yFast
       </Envelope>"
     end
 
+    # consulta disponivel
+    def self.card_number_limit_xml(card_id)
+      "<Envelope xmlns='http://schemas.xmlsoap.org/soap/envelope/'>
+        <Body>
+          <consulta_disponivel xmlns='http://WSGServ/'>
+            <versao xmlns=''>#{XML_VERSION}</versao>
+            <cod_input xmlns=''>c</cod_input>
+            <cartao xmlns=''>#{card_id}</cartao>
+            <proxy xmlns=''>#{card_id}</proxy>
+            <usr xmlns=''>#{M2yFast.configuration.username}</usr>
+            <pwd xmlns=''>#{M2yFast.configuration.password}</pwd>
+          </consulta_disponivel>
+        </Body>
+      </Envelope>"
+    end
+
     # alterar_limite
     def self.update_limit_xml(body)
       "<Envelope xmlns='http://schemas.xmlsoap.org/soap/envelope/'>

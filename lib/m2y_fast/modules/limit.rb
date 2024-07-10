@@ -7,6 +7,13 @@ module M2yFast
       full_response(LimitXmlResponseParser.card_limit_response(response.body), xml, response.body, :consulta_disponivel)
     end
 
+    # consulta_disponivel
+    def self.card_limit_by_number(card_id)
+      xml = LimitXmlBuilder.card_number_limit_xml(card_id)
+      response = M2yFast.configuration.savon_client.call(:consulta_disponivel, xml: xml)
+      full_response(LimitXmlResponseParser.card_limit_response(response.body), xml, response.body, :consulta_disponivel)
+    end
+
     # alterar_limite
     def self.update_limit(body)
       xml = LimitXmlBuilder.update_limit_xml(body)
