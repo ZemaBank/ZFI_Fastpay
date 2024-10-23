@@ -37,7 +37,8 @@ module M2yFast
 
         {
           error: (codigo_retorno != 0 || cod_ret != 0),
-          code: codigo_retorno
+          code: codigo_retorno,
+          cod_ret: cod_ret
         }
       rescue
         { error: true }
